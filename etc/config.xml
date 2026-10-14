@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!--
+    Copyright © 2026 Roman Pasichnyk
+    SPDX-License-Identifier: OSL-3.0 OR AFL-3.0
+
+    payment_action=Order is required: Payment::place() only calls
+    initialize() when the method reports a payment action. Without it the redirect
+    is never built and the order lands in plain "new".
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/config.xsd">
+    <default>
+        <payment>
+            <zero_paypal_standard>
+                <active>0</active>
+                <model>Zero\Paypal\Model\Standard</model>
+                <order_status>pending</order_status>
+                <payment_action>Order</payment_action>
+                <title>PayPal</title>
+                <allowspecific>0</allowspecific>
+                <group>offline</group>
+            </zero_paypal_standard>
+            <zero_paypal_checkout>
+                <active>0</active>
+                <model>Zero\Paypal\Model\Checkout\Payment</model>
+                <title>PayPal, Pay Later</title>
+                <client_secret backend_model="Magento\Config\Model\Config\Backend\Encrypted"/>
+                <sandbox>1</sandbox>
+                <order_status>pending_payment</order_status>
+                <payment_action>order</payment_action>
+                <allowspecific>0</allowspecific>
+                <sort_order>40</sort_order>
+                <group>offline</group>
+            </zero_paypal_checkout>
+        </payment>
+    </default>
+</config>
