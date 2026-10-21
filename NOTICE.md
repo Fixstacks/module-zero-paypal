@@ -1,4 +1,4 @@
-# fixstacks/module-zero-paypal — licensing
+# zerofront/module-zero-paypal — licensing
 
 Copyright © 2026 Roman Pasichnyk.
 
